@@ -86,4 +86,4 @@ export async function getStaticProps() {
 
 }
 
-console.log(process.env.NEXT_PUBLIC_API, process.env.API)
+// console.log(process.env.NEXT_PUBLIC_API, process.env.API)
