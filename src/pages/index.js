@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 import Map from '../components/Map';
 import Banner from '../components/banner/Banner';
+import Footer from '../components/footer/footer';
 
 import { StyledLayout } from '../../styles/layout.style';
 
@@ -67,6 +68,7 @@ export default function Home(res) {
           )}
         </Map>
       </StyledLayout>
+      <Footer />
     </div>
   )
 }

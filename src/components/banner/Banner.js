@@ -42,7 +42,7 @@ export default function Banner(props) {
   return (
     <StyledBanner>
       <div className="container">
-        <h1 className="title">IP Address Tracker</h1>
+        <h1 className="title">NextJS IP Tracker</h1>
         <div className="search-wrapper">
           <input type="search"
             placeholder="Search for any IP Address"

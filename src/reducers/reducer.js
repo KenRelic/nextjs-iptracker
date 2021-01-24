@@ -3,14 +3,14 @@
 const initialState = {
   input: '',
   locationData: {
-    latitude: 64,
-    longitude: -122,
+    latitude: 28.35753,
+    longitude: -81.55827,
     ip: '8.8.8.8',
-    offset: -8,
+    offset: -5,
     isp: 'Google LLC',
-    district: 'Mountain View',
-    city: 'California',
-    country_name: 'US',
+    district: 'Orange County',
+    city: 'Mountain View',
+    country_name: 'United States',
   }
 
 }
