@@ -17,7 +17,7 @@ const MapEffect = ({ useMap }) => {
   React.useEffect(() => {
     console.log('map', map, 'center', map.options.center)
     map.setView([lat, lng])
-    map.locate();
+    // map.locate();
   }, [lat, lng])
 
   return null

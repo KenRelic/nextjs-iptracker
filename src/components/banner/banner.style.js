@@ -92,11 +92,12 @@ export const StyledBanner = styled('div')`
       }
       .result-value{
         font-weight: bold;
-        font-size: 1.7rem;
+        font-size: 1.6rem;
         color: #000;
         text-overflow:ellipsis;
 
-        @media all and (max-width: 916px){
+
+        @media all and (max-width: 1024px){
           font-size: 1.5rem;
         }
         @media all and (max-width: 860px){
