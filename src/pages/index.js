@@ -28,7 +28,7 @@ const MapEffect = ({ useMap }) => {
   return null
 }
 
-export default function Home(res) {
+export default function Home() {
 
   const dispatch = useDispatch();
   const locationData = useSelector((state) => state.locationData);
@@ -42,6 +42,7 @@ export default function Home(res) {
       type: 'SET_LOCATION',
       payload: await fetchData('', locationData)
     })
+    dispatch({type:'HAS_NO_ERROR'})
   }, [])
 
   return (
@@ -80,17 +81,17 @@ export default function Home(res) {
   )
 }
 
-export async function getStaticProps() {
+// export async function getStaticProps() {
 
-  const res = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${process.env.NEXT_PUBLIC_API}`)
-  const data = await res.json();
+//   const res = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${process.env.NEXT_PUBLIC_API}`)
+//   const data = await res.json();
 
-  return {
-    props: {
-      data
-    }
-  }
+//   return {
+//     props: {
+//       data
+//     }
+//   }
 
-}
+// }
 
 // console.log(process.env.NEXT_PUBLIC_API, process.env.API)

@@ -21,7 +21,7 @@ export default async function getUserDataByIP(ip, setErrorMsg) {
 
       const { offset } = time_zone;
       const locationData = {
-        longitude, latitude, ip, isp, district, city, country_name, offset
+        longitude, latitude, ip, isp, district, city, country_name, offset:`${offset+':00'}`
       }
 
       // setLocation([data.latitude, data.longitude])

@@ -1,17 +1,31 @@
 
+// const initialState = {
+//   input: '',
+//   hasNoError:true,
+//   locationData: {
+//     latitude: 28.35753,
+//     longitude: -81.55827,
+//     ip: '8.8.8.8',
+//     offset: -5,
+//     isp: 'Google LLC',
+//     district: 'Orange County',
+//     city: 'Mountain View',
+//     country_name: 'United States',
+//   }
 
+// }
 const initialState = {
   input: '',
   hasNoError:true,
   locationData: {
     latitude: 28.35753,
     longitude: -81.55827,
-    ip: '8.8.8.8',
-    offset: -5,
-    isp: 'Google LLC',
-    district: 'Orange County',
-    city: 'Mountain View',
-    country_name: 'United States',
+    ip: '',
+    offset: '',
+    isp: '',
+    district: '',
+    city: '',
+    country_name: '',
   }
 
 }

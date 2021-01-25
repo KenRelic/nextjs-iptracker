@@ -69,12 +69,12 @@ export default function Banner(props) {
               <div className="separator"></div>
               <div className="criteria">
                 <h2 className="sub-title">LOCATION</h2>
-                <p className="result-value">{locationData.district + ', ' + locationData.city + ', ' + locationData.country_name}</p>
+                <p className="result-value">{locationData.district + ' ' + locationData.city + ' ' + locationData.country_name}</p>
               </div>
               <div className="separator"></div>
               <div className="criteria">
                 <h2 className="sub-title">TIMEZONE</h2>
-                <p className="result-value">{locationData.offset}:00</p>
+                <p className="result-value">{locationData.offset}</p>
               </div>
               <div className="separator"></div>
               <div className="criteria">
