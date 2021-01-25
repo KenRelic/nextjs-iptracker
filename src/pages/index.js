@@ -1,16 +1,20 @@
 import Head from 'next/head';
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 import Map from '../components/Map';
 import Banner from '../components/banner/Banner';
 import Footer from '../components/footer/footer';
 
 import { StyledLayout } from '../../styles/layout.style';
+import fetchData from '../util/fetchData';
 
 
 const MapEffect = ({ useMap }) => {
+
+
   const lat = useSelector((state) => state.locationData.latitude);
   const lng = useSelector((state) => state.locationData.longitude);
 
@@ -25,13 +29,20 @@ const MapEffect = ({ useMap }) => {
 }
 
 export default function Home(res) {
+
+  const dispatch = useDispatch();
   const locationData = useSelector((state) => state.locationData);
   const lat = useSelector((state) => state.locationData.latitude);
   const lng = useSelector((state) => state.locationData.longitude);
+  const hasNoError = useSelector((state) => state.hasNoError);
 
-
-  const [hasFetchError, setHasFetchError] = React.useState(false);
-
+  React.useEffect(async () => {
+    console.log('mounted')
+    dispatch({
+      type: 'SET_LOCATION',
+      payload: await fetchData('', locationData)
+    })
+  }, [])
 
   return (
     <div>
@@ -44,14 +55,10 @@ export default function Home(res) {
 
 
       <StyledLayout>
-        <Banner
-          hasFetchError={hasFetchError}
-          setHasFetchError={setHasFetchError} />
-
-
+        <Banner />
         <Map loc={[lat, lng]} style={{ height: '65vh', width: "100%", textAlign: 'center' }} center={[lat, lng]} zoom={12}>
           {({ TileLayer, Marker, Popup, useMap }) => (
-            <>
+            hasNoError ? <>
               <MapEffect useMap={useMap} />
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -64,7 +71,7 @@ export default function Home(res) {
                   {locationData.country_name}
                 </Popup>
               </Marker>
-            </>
+            </> : null
           )}
         </Map>
       </StyledLayout>

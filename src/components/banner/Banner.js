@@ -31,12 +31,19 @@ export default function Banner(props) {
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState(['404', 'IP Not Found'])
   const { input, locationData, getLocation, setInput } = useMapData();
+  const hasNoError = useSelector((state) => state.hasNoError);
 
-  async function handleSetLocation(input){
-    dispatch({
-      type:'SET_LOCATION',
-      payload: await fetchData(input)
-    })
+  async function handleSetLocation(input, setErrorMsg) {
+    let data = await fetchData(input, setErrorMsg)
+    if (data && data.ip) {
+      dispatch({
+        type: 'SET_LOCATION',
+        payload: data
+      })
+      dispatch({type:'HAS_NO_ERROR'})
+    } else{
+      dispatch({type:'HAS_ERROR'})
+    }
   }
 
   return (
@@ -50,11 +57,11 @@ export default function Banner(props) {
             onChange={(e) => setInput(e.target.value)}
           />
           <button className="submit-btn" type="button"
-            onClick={()=>handleSetLocation(input)}></button>
+            onClick={() => handleSetLocation(input, setErrorMessage)}></button>
         </div>
 
         <div className="result-section">
-          {!props.hasFetchError ?
+          {hasNoError ?
             <><div className="criteria">
               <h2 className="sub-title">IP ADDRESS</h2>
               <p className="result-value">{locationData.ip}</p>

@@ -3,13 +3,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 
-export default async function getUserDataByIP(ip) {
+export default async function getUserDataByIP(ip, setErrorMsg) {
   // const dispatch = useDispatch();
   try {
     const res = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${process.env.NEXT_PUBLIC_API}&ip=${ip}`)
     const data = await res.json();
-    if (!data.message && data) {
- 
+    console.log(data.ip)
+    if (data.ip) {
       const { latitude,
         longitude,
         ip,
@@ -26,21 +26,22 @@ export default async function getUserDataByIP(ip) {
 
       // setLocation([data.latitude, data.longitude])
       // setFetchError(false);
-console.log(ip, locationData, data)
-      return locationData
-      
+      console.log(ip, locationData, data)
+      return locationData 
+
     } else {
       // setFetchError(true);
       // setErrorMessage(['404', 'IP Not Found'])
-      return //eror dispatch
+      // return //eror dispatch
+      return null
     }
 
 
   } catch (error) {
     // setFetchError(true);
-    // setErrorMessage(['Network', 'error'])
+    setErrorMsg(['Network', 'error'])
     console.log(error)
-    return //currentData;
+    return null;
   }
 
 }
